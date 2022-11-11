@@ -8,7 +8,8 @@ PRINTF			=		$(PATH_PRINTF)/libftprintf.a
 
 RM				=		rm -rf
 
-SRC				=		foge-foge.c
+SRC				=		foge-foge.c \
+						$(addprefix utils/, )
 
 OBJ				=		$(SRC:%.c=%.o)
 
