@@ -22,3 +22,8 @@ int	main()
 	}
 	fclose(f);
 }
+
+void	open_map()
+{
+	
+}
