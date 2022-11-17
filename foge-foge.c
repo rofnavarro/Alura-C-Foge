@@ -1,29 +1,17 @@
 #include <stdio.h>
 #include "./ft_printf/ft_printf.h"
+#include "foge-foge.h"
 
-int	main()
+int	main(int arc, char **argv)
 {
-	char	mapa[5][11];
-	FILE	*f;
-	int		i;
+	char	comando;
 
-	i = 0;
-	f = fopen("./mapas/mapa.txt", "r");
-	if (f == 0)
+	ler_mapa(&MAPA);
+		imprimir_mapa(&MAPA);
+	do
 	{
-		ft_printf("Erro de leitura do mapa!\n");
-		exit(EXIT_FAILURE);
-	}
-	while (i < 5)
-	{
-		fscanf(f, "%s", mapa[i]);
-		ft_printf("%s\n", mapa[i]);
-		i++;
-	}
-	fclose(f);
-}
-
-void	open_map()
-{
-	
+		scanf(" %c", &comando);
+		mover_jogador(comando);
+	} while (!acabar());
+	liberar_mapa(&MAPA);
 }
