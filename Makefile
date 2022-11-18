@@ -9,7 +9,8 @@ PRINTF			=		$(PATH_PRINTF)/libftprintf.a
 RM				=		rm -rf
 
 SRC				=		foge-foge.c \
-						$(addprefix utils/, jogo.c \
+						$(addprefix utils/, jogador.c \
+											jogo.c \
 											mapa.c \
 											)
 

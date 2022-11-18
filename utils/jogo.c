@@ -1,6 +1,6 @@
 #include "../foge-foge.h"
 
-int	acabar()
+int	acabar(void)
 {
 	return (0);
 }

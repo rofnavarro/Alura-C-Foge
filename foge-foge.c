@@ -2,16 +2,22 @@
 #include "./ft_printf/ft_printf.h"
 #include "foge-foge.h"
 
-int	main(int arc, char **argv)
+t_mapa MAPA;
+t_posicao HEROI;
+
+int	main(void)
 {
 	char	comando;
 
+	HEROI.x = 0;
+	HEROI.y = 0;
 	ler_mapa(&MAPA);
-		imprimir_mapa(&MAPA);
+	encontrar_no_mapa(&MAPA, &HEROI, 'P');
 	do
 	{
+		imprimir_mapa(&MAPA);
 		scanf(" %c", &comando);
-		mover_jogador(comando);
+		mover_jogador(&MAPA, &HEROI, comando);
 	} while (!acabar());
 	liberar_mapa(&MAPA);
 }

@@ -12,15 +12,26 @@ typedef struct s_mapa
 	int		x;
 }	t_mapa;
 
-extern t_mapa MAPA;
+typedef struct s_posicao
+{
+	int	x;
+	int	y;
+}	t_posicao;
+
+extern	t_mapa MAPA;
+extern	t_posicao HEROI;
+
+//	jogador.c
+void	mover_jogador(t_mapa *MAPA, t_posicao *HEROI, char direcao);
 
 //	jogo.c
-int		acabar();
+int		acabar(void);
 
 //	mapa.c
 void	ler_mapa(t_mapa *MAPA);
 void	alocar_mapa(t_mapa *MAPA);
 void	imprimir_mapa(t_mapa *MAPA);
 void	liberar_mapa(t_mapa *MAPA);
+void	encontrar_no_mapa(t_mapa *MAPA, t_posicao *alvo, char char_no_mapa);
 
 #endif
