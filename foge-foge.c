@@ -9,8 +9,6 @@ int	main(void)
 {
 	char	comando;
 
-	HEROI.x = 0;
-	HEROI.y = 0;
 	ler_mapa(&MAPA);
 	encontrar_no_mapa(&MAPA, &HEROI, 'P');
 	do

@@ -18,9 +18,6 @@ typedef struct s_posicao
 	int	y;
 }	t_posicao;
 
-extern	t_mapa MAPA;
-extern	t_posicao HEROI;
-
 //	jogador.c
 void	mover_jogador(t_mapa *MAPA, t_posicao *HEROI, char direcao);
 
