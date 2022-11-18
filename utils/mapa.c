@@ -79,6 +79,7 @@ void	encontrar_no_mapa(t_mapa *MAPA, t_posicao *alvo, char char_no_mapa)
 			}
 			j++;
 		}
+		j = 0;
 		i++;
 	}
 }
