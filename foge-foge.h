@@ -5,12 +5,13 @@
 # include <stdlib.h>
 # include "./ft_printf/ft_printf.h"
 
-typedef struct s_mapa
-{
-	char	**mapa;
-	int		y;
-	int		x;
-}	t_mapa;
+# define	TRUE		0
+# define	FALSE		1
+
+# define	CIMA		'w'
+# define	ESQUERDA	'a'
+# define	BAIXO		's'
+# define	DIREITA		'd'
 
 typedef struct s_posicao
 {
@@ -18,17 +19,26 @@ typedef struct s_posicao
 	int	y;
 }	t_posicao;
 
+typedef struct s_mapa
+{
+	char		**mapa;
+	int			y;
+	int			x;
+	t_posicao	jogador;
+}	t_mapa;
+
+
 //	jogador.c
-void	mover_jogador(t_mapa *MAPA, t_posicao *HEROI, char direcao);
+void	mover_jogador(t_mapa *mapa, char direcao);
 
 //	jogo.c
 int		acabar(void);
 
 //	mapa.c
-void	ler_mapa(t_mapa *MAPA);
-void	alocar_mapa(t_mapa *MAPA);
-void	imprimir_mapa(t_mapa *MAPA);
-void	liberar_mapa(t_mapa *MAPA);
-void	encontrar_no_mapa(t_mapa *MAPA, t_posicao *alvo, char char_no_mapa);
+void	ler_mapa(t_mapa *mapa);
+void	alocar_mapa(t_mapa *mapa);
+void	imprimir_mapa(t_mapa *mapa);
+void	liberar_mapa(t_mapa *mapa);
+void	encontrar_no_mapa(t_mapa *mapa, t_posicao *alvo, char char_no_mapa);
 
 #endif

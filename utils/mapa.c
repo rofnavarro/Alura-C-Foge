@@ -1,6 +1,6 @@
 #include "../foge-foge.h"
 
-void	ler_mapa(t_mapa *MAPA)
+void	ler_mapa(t_mapa *mapa)
 {
 	int		i;
 	FILE	*f;
@@ -12,66 +12,66 @@ void	ler_mapa(t_mapa *MAPA)
 		ft_printf("Erro de leitura de mapa!\n");
 		exit(EXIT_FAILURE);
 	}
-	fscanf(f, "%d %d", &(MAPA->y), &(MAPA->x));
-	alocar_mapa(MAPA);
-	while (i < MAPA->y)
+	fscanf(f, "%d %d", &(mapa->y), &(mapa->x));
+	alocar_mapa(mapa);
+	while (i < mapa->y)
 	{
-		fscanf(f, "%s", MAPA->mapa[i]);
+		fscanf(f, "%s", mapa->mapa[i]);
 		i++;
 	}
 	fclose(f);
 }
 
-void	alocar_mapa(t_mapa *MAPA)
+void	alocar_mapa(t_mapa *mapa)
 {
 	int	i;
 
 	i = 0;
-	MAPA->mapa = (char **)malloc(sizeof(char *) * MAPA->y);
-	while (i < MAPA->y)
+	mapa->mapa = (char **)malloc(sizeof(char *) * mapa->y);
+	while (i < mapa->y)
 	{
-		MAPA->mapa[i] = (char *)malloc(sizeof(char) * (MAPA->x + 1));
+		mapa->mapa[i] = (char *)malloc(sizeof(char) * (mapa->x + 1));
 		i++;
 	}
 }
 
-void	imprimir_mapa(t_mapa *MAPA)
+void	imprimir_mapa(t_mapa *mapa)
 {
 	int	i;
 
 	i = 0;
-	while (i < MAPA->y)
+	while (i < mapa->y)
 	{
-		ft_printf("%s\n", MAPA->mapa[i]);
+		ft_printf("%s\n", mapa->mapa[i]);
 		i++;
 	}
 }
 
-void	liberar_mapa(t_mapa *MAPA)
+void	liberar_mapa(t_mapa *mapa)
 {
 	int	i;
 
 	i = 0;
-	while (i < MAPA->y)
+	while (i < mapa->y)
 	{
-		free(MAPA->mapa[i]);
+		free(mapa->mapa[i]);
 		i++;
 	}
-	free(MAPA->mapa);
+	free(mapa->mapa);
 }
 
-void	encontrar_no_mapa(t_mapa *MAPA, t_posicao *alvo, char char_no_mapa)
+void	encontrar_no_mapa(t_mapa *mapa, t_posicao *alvo, char char_no_mapa)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	while (i < MAPA->y)
+	while (i < mapa->y)
 	{
-		while (j < MAPA->x - 1)
+		while (j < mapa->x - 1)
 		{
-			if (MAPA->mapa[i][j] == char_no_mapa)
+			if (mapa->mapa[i][j] == char_no_mapa)
 			{
 				alvo->y = i;
 				alvo->x = j;
