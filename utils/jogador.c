@@ -37,6 +37,8 @@ static int	verificar_local(t_mapa *mapa, char direcao)
 		proxima.x++;
 	if (mapa->mapa[proxima.y][proxima.x] != '0')
 		return (FALSE);
+	if (proxima.y > mapa->y || proxima.x > mapa->y)
+		return (FALSE);
 	mapa->mapa[mapa->jogador.y][mapa->jogador.x] = '0';
 	return (TRUE);
 }
