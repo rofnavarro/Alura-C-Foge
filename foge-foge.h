@@ -25,6 +25,7 @@ typedef struct s_mapa
 	int			y;
 	int			x;
 	t_posicao	jogador;
+	t_posicao	fantasmas;
 }	t_mapa;
 
 
