@@ -13,6 +13,7 @@ void	ler_mapa(t_mapa *mapa)
 		exit(EXIT_FAILURE);
 	}
 	fscanf(f, "%d %d", &(mapa->y), &(mapa->x));
+	ft_printf("x: %d / y: %d\n", mapa->x, mapa->y);
 	alocar_mapa(mapa);
 	while (i < mapa->y)
 	{
