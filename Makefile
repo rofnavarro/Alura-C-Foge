@@ -9,10 +9,11 @@ PRINTF			=		$(PATH_PRINTF)/libftprintf.a
 RM				=		rm -rf
 
 SRC				=		foge-foge.c \
-						$(addprefix utils/, jogador.c \
+						$(addprefix utils/, alvo.c \
+											fantasma.c \
+											jogador.c \
 											jogo.c \
-											mapa.c \
-											)
+											mapa.c)
 
 OBJ				=		$(SRC:%.c=%.o)
 

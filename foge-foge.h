@@ -28,6 +28,13 @@ typedef struct s_mapa
 	t_posicao	fantasmas;
 }	t_mapa;
 
+//	alvo.c
+void	encontrar_no_mapa(t_mapa *mapa, t_posicao *alvo, char char_no_mapa);
+int		verificar_local(t_mapa *mapa, t_posicao *alvo, char direcao);
+void	mover(t_mapa *mapa, t_posicao *alvo, char direcao);
+
+//	fantasma.c
+void	mover_fantasma(t_mapa *mapa, char direcao);
 
 //	jogador.c
 void	mover_jogador(t_mapa *mapa, char direcao);
@@ -40,6 +47,5 @@ void	ler_mapa(t_mapa *mapa);
 void	alocar_mapa(t_mapa *mapa);
 void	imprimir_mapa(t_mapa *mapa);
 void	liberar_mapa(t_mapa *mapa);
-void	encontrar_no_mapa(t_mapa *mapa, t_posicao *alvo, char char_no_mapa);
 
 #endif

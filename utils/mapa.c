@@ -60,27 +60,3 @@ void	liberar_mapa(t_mapa *mapa)
 	}
 	free(mapa->mapa);
 }
-
-void	encontrar_no_mapa(t_mapa *mapa, t_posicao *alvo, char char_no_mapa)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (i < mapa->y)
-	{
-		while (j < mapa->x - 1)
-		{
-			if (mapa->mapa[i][j] == char_no_mapa)
-			{
-				alvo->y = i;
-				alvo->x = j;
-				return ;
-			}
-			j++;
-		}
-		j = 0;
-		i++;
-	}
-}

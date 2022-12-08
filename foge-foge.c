@@ -2,7 +2,6 @@
 #include "./ft_printf/ft_printf.h"
 #include "foge-foge.h"
 
-
 int	main(void)
 {
 	t_mapa		mapa;
@@ -10,7 +9,7 @@ int	main(void)
 
 	ler_mapa(&mapa);
 	encontrar_no_mapa(&mapa, &mapa.jogador, 'P');
-	//encontrar_no_mapa(&mapa, &mapa.fantasmas, 'F');
+	encontrar_no_mapa(&mapa, &mapa.fantasmas, 'F');
 	do
 	{
 		imprimir_mapa(&mapa);
