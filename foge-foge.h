@@ -30,11 +30,11 @@ typedef struct s_mapa
 
 //	alvo.c
 void	encontrar_no_mapa(t_mapa *mapa, t_posicao *alvo, char char_no_mapa);
-int		verificar_local(t_mapa *mapa, t_posicao *alvo, char direcao);
-void	mover(t_mapa *mapa, t_posicao *alvo, char direcao);
+int		verificar_local(t_mapa *mapa, t_posicao *alvo, char direcao, char alvo_id);
+void	mover(t_mapa *mapa, t_posicao *alvo, char direcao, char alvo_id);
 
 //	fantasma.c
-void	mover_fantasma(t_mapa *mapa, char direcao);
+void	mover_fantasma(t_mapa *mapa);
 
 //	jogador.c
 void	mover_jogador(t_mapa *mapa, char direcao);

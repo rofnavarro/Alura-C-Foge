@@ -6,8 +6,8 @@ void	mover_jogador(t_mapa *mapa, char direcao)
 {
 	if (filtrar_input(direcao) == TRUE)
 	{
-		if (verificar_local(mapa, &mapa->jogador, direcao) == TRUE)
-			mover(mapa, &mapa->jogador, direcao);
+		if (verificar_local(mapa, &mapa->jogador, direcao, 'P') == TRUE)
+			mover(mapa, &mapa->jogador, direcao, 'P');
 	}
 }
 

@@ -1,5 +1,7 @@
 #include "../foge-foge.h"
 
+static int	checar_proximo_local(char proximo, char alvo_id);
+
 void	encontrar_no_mapa(t_mapa *mapa, t_posicao *alvo, char char_no_mapa)
 {
 	int	i;
@@ -24,10 +26,10 @@ void	encontrar_no_mapa(t_mapa *mapa, t_posicao *alvo, char char_no_mapa)
 	}
 }
 
-int	verificar_local(t_mapa *mapa, t_posicao *alvo, char direcao)
+int	verificar_local(t_mapa *mapa, t_posicao *alvo, char direcao, char alvo_id)
 {
 	t_posicao	proxima;
-
+	int			ret;
 	proxima.x = alvo->x;
 	proxima.y = alvo->y;
 	if (direcao == CIMA)
@@ -38,32 +40,50 @@ int	verificar_local(t_mapa *mapa, t_posicao *alvo, char direcao)
 		proxima.y++;
 	else if (direcao == DIREITA)
 		proxima.x++;
-	if (mapa->mapa[proxima.y][proxima.x] != '0')
-		return (FALSE);
-	mapa->mapa[alvo->y][alvo->x] = '0';
-	return (TRUE);
+	ret = checar_proximo_local(mapa->mapa[proxima.y][proxima.x], alvo_id);
+	if (ret == TRUE)
+		mapa->mapa[alvo->y][alvo->x] = '0';
+	return (ret);
 }
 
-void	mover(t_mapa *mapa, t_posicao *alvo, char direcao)
+void	mover(t_mapa *mapa, t_posicao *alvo, char direcao, char alvo_id)
 {
 	if (direcao == CIMA)
 	{
-		mapa->mapa[alvo->y - 1][alvo->x] = 'P';
+		mapa->mapa[alvo->y - 1][alvo->x] = alvo_id;
 		alvo->y--;
 	}
 	else if (direcao == ESQUERDA)
 	{
-		mapa->mapa[alvo->y][alvo->x - 1] = 'P';
+		mapa->mapa[alvo->y][alvo->x - 1] = alvo_id;
 		alvo->x--;
 	}
 	else if (direcao == BAIXO)
 	{
-		mapa->mapa[alvo->y + 1][alvo->x] = 'P';
+		mapa->mapa[alvo->y + 1][alvo->x] = alvo_id;
 		alvo->y++;
 	}
 	else if (direcao == DIREITA)
 	{
-		mapa->mapa[alvo->y][alvo->x + 1] = 'P';
+		mapa->mapa[alvo->y][alvo->x + 1] = alvo_id;
 		alvo->x++;
+	}
+}
+
+static int	checar_proximo_local(char proximo, char alvo_id)
+{
+	if (alvo_id == 'P')
+	{
+		if (proximo == '0' || proximo == 'C')
+			return (TRUE);
+		else
+			return (FALSE);
+	}
+	else if (alvo_id == 'F')
+	{
+		if (proximo == 'P' || proximo == 'C' || proximo == '0')
+			return (TRUE);
+		else
+			return (FALSE);
 	}
 }
