@@ -12,6 +12,7 @@
 # define	ESQUERDA	'a'
 # define	BAIXO		's'
 # define	DIREITA		'd'
+# define	ESC			27
 
 typedef struct s_posicao
 {
