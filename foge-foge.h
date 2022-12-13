@@ -35,7 +35,7 @@ int		verificar_local(t_mapa *mapa, t_posicao *alvo, char direcao, char alvo_id);
 void	mover(t_mapa *mapa, t_posicao *alvo, char direcao, char alvo_id);
 
 //	fantasma.c
-void	mover_fantasma(t_mapa *mapa);
+void	mover_fantasma(t_mapa *copia, t_mapa *mapa);
 
 //	jogador.c
 void	mover_jogador(t_mapa *mapa, char direcao);
@@ -48,5 +48,6 @@ void	ler_mapa(t_mapa *mapa);
 void	alocar_mapa(t_mapa *mapa);
 void	imprimir_mapa(t_mapa *mapa);
 void	liberar_mapa(t_mapa *mapa);
+void	copiar_mapa(t_mapa *destino, t_mapa *origem);
 
 #endif

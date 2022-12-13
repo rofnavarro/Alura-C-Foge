@@ -60,3 +60,18 @@ void	liberar_mapa(t_mapa *mapa)
 	}
 	free(mapa->mapa);
 }
+
+void	copiar_mapa(t_mapa *destino, t_mapa *origem)
+{
+	int i;
+
+	i = 0;
+	destino->y = origem->y;
+	destino->x = origem->x;
+	alocar_mapa(destino);
+	while (i < origem->y)
+	{
+		ft_strlcpy(destino->mapa[i], origem->mapa[i], origem->x);
+		i++;
+	}
+}
