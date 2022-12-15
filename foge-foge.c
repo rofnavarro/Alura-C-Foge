@@ -14,7 +14,7 @@ int	main(void)
 		imprimir_mapa(&mapa);
 		scanf(" %c", &comando);
 		mover_jogador(&mapa, comando);
-		mover_fantasma(&mapa);
+		fantasma(&mapa);
 	} while (!acabar());
 	liberar_mapa(&mapa);
 }

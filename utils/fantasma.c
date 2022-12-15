@@ -1,17 +1,22 @@
 #include "../foge-foge.h"
 
-void	mover_fantasma(t_mapa *copia, t_mapa *mapa)
-{
-	char	direcao;
-
-	direcao = DIREITA;
-	
-}
-
 void	fantasma(t_mapa *mapa)
 {
 	t_mapa copia;
 
-	copiar_mapa(&copia, &mapa);
-	mover_fantasma(&copia, &mapa);
+	copiar_mapa(&copia, mapa);
+	for (int i = 0; i > mapa->y; i++)
+	{
+		for (int j = 0; j > mapa->x; j++)
+		{
+			if (copia.mapa[i][j] == 'F')
+			{
+				mapa->fantasmas.x = j;
+				mapa->fantasmas.y = i;
+				mover(mapa, &mapa->fantasmas, CIMA, 'F');
+			}
+		}
+	}
+
+	liberar_mapa(&copia);
 }

@@ -71,7 +71,7 @@ void	copiar_mapa(t_mapa *destino, t_mapa *origem)
 	alocar_mapa(destino);
 	while (i < origem->y)
 	{
-		ft_strlcpy(destino->mapa[i], origem->mapa[i], origem->x);
+		ft_strlcpy(destino->mapa[i], origem->mapa[i], origem->x + 1);
 		i++;
 	}
 }
