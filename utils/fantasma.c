@@ -13,7 +13,8 @@ void	fantasma(t_mapa *mapa)
 			{
 				mapa->fantasmas.x = j;
 				mapa->fantasmas.y = i;
-				mover(mapa, &mapa->fantasmas, CIMA, 'F');
+				if (verificar_local(mapa, &mapa->fantasmas, CIMA, 'F') == TRUE)
+					mover(mapa, &mapa->fantasmas, CIMA, 'F');
 			}
 		}
 	}
