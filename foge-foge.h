@@ -3,6 +3,7 @@
 
 # include <stdio.h>
 # include <stdlib.h>
+# include <time.h>
 # include "./ft_printf/ft_printf.h"
 
 # define	TRUE		0
@@ -36,6 +37,7 @@ void	mover(t_mapa *mapa, t_posicao *alvo, char direcao, char alvo_id);
 
 //	fantasma.c
 void	fantasma(t_mapa *mapa);
+char	ai_fantasma(t_mapa *mapa, t_posicao *fantasma);
 
 //	jogador.c
 void	mover_jogador(t_mapa *mapa, char direcao);
