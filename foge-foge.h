@@ -37,7 +37,7 @@ void	mover(t_mapa *mapa, t_posicao *alvo, char direcao, char alvo_id);
 
 //	fantasma.c
 void	fantasma(t_mapa *mapa);
-char	ai_fantasma(t_mapa *mapa, t_posicao *fantasma);
+void	mover_fantasma(t_mapa *mapa, t_mapa *copia);
 
 //	jogador.c
 void	mover_jogador(t_mapa *mapa, char direcao);

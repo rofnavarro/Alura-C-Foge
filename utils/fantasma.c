@@ -3,7 +3,6 @@
 void	fantasma(t_mapa *mapa)
 {
 	t_mapa	copia;
-	char	direcao;
 
 	copiar_mapa(&copia, mapa);
 	for (int i = 0; i < mapa->y; i++)
@@ -14,36 +13,31 @@ void	fantasma(t_mapa *mapa)
 			{
 				mapa->fantasmas.x = j;
 				mapa->fantasmas.y = i;
-				direcao = ai_fantasma(mapa, &mapa->fantasmas);
-				mover(mapa, &mapa->fantasmas, direcao, 'F');
+				mover_fantasma(mapa, &copia);
 			}
 		}
 	}
 	liberar_mapa(&copia);
 }
 
-char	ai_fantasma(t_mapa *mapa, t_posicao *fantasma)
+void	mover_fantasma(t_mapa *mapa, t_mapa *copia)
 {
+	char	direcao[4] = {CIMA, BAIXO, DIREITA, ESQUERDA};
 	int		i;
-	int		direcao;
-	char	ret;
+	int		trys;
 
 	srand(time(0));
 	i = 0;
-	while (i < 10)
+	trys = 0;
+	while (trys < 10)
 	{
-		direcao = rand() % 4;
-		if (direcao == 0)
-			ret = CIMA;
-		else if (direcao == 1)
-			ret = BAIXO;
-		else if (direcao == 2)
-			ret = DIREITA;
-		else if (direcao == 3)
-			ret = ESQUERDA;
-		if (!verificar_local(mapa, fantasma, direcao, 'F') == TRUE)
-			i++;
-		else
-			return (ret);
+		i = rand() % 4;
+		if (verificar_local(mapa, &mapa->fantasmas, direcao[i], 'F') == TRUE)
+		{
+			mover(mapa, &mapa->fantasmas, direcao[i], 'F');
+			return ;
+		}
+		trys++;
 	}
+	return ;
 }
