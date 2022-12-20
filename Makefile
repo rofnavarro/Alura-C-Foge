@@ -12,7 +12,6 @@ SRC				=		foge-foge.c \
 						$(addprefix utils/, alvo.c \
 											fantasma.c \
 											jogador.c \
-											jogo.c \
 											mapa.c)
 
 OBJ				=		$(SRC:%.c=%.o)

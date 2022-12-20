@@ -2,7 +2,7 @@
 
 static int	checar_proximo_local(char proximo, char alvo_id);
 
-void	encontrar_no_mapa(t_mapa *mapa, t_posicao *alvo, char char_no_mapa)
+int	encontrar_no_mapa(t_mapa *mapa, t_posicao *alvo, char char_no_mapa)
 {
 	int	i;
 	int	j;
@@ -17,13 +17,14 @@ void	encontrar_no_mapa(t_mapa *mapa, t_posicao *alvo, char char_no_mapa)
 			{
 				alvo->y = i;
 				alvo->x = j;
-				return ;
+				return (TRUE);
 			}
 			j++;
 		}
 		j = 0;
 		i++;
 	}
+	return (FALSE);
 }
 
 int	verificar_local(t_mapa *mapa, t_posicao *alvo, char direcao, char alvo_id)

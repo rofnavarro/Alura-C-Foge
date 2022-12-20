@@ -8,13 +8,12 @@ int	main(void)
 	char		comando;
 
 	ler_mapa(&mapa);
-	encontrar_no_mapa(&mapa, &mapa.jogador, 'P');
-	do
+	while (encontrar_no_mapa(&mapa, &mapa.jogador, 'P') == TRUE)
 	{
 		imprimir_mapa(&mapa);
 		scanf(" %c", &comando);
 		mover_jogador(&mapa, comando);
 		fantasma(&mapa);
-	} while (!acabar());
+	}
 	liberar_mapa(&mapa);
 }

@@ -31,19 +31,16 @@ typedef struct s_mapa
 }	t_mapa;
 
 //	alvo.c
-void	encontrar_no_mapa(t_mapa *mapa, t_posicao *alvo, char char_no_mapa);
+int		encontrar_no_mapa(t_mapa *mapa, t_posicao *alvo, char char_no_mapa);
 int		verificar_local(t_mapa *mapa, t_posicao *alvo, char direcao, char alvo_id);
 void	mover(t_mapa *mapa, t_posicao *alvo, char direcao, char alvo_id);
 
 //	fantasma.c
 void	fantasma(t_mapa *mapa);
-void	mover_fantasma(t_mapa *mapa, t_mapa *copia);
+void	mover_fantasma(t_mapa *mapa);
 
 //	jogador.c
 void	mover_jogador(t_mapa *mapa, char direcao);
-
-//	jogo.c
-int		acabar(void);
 
 //	mapa.c
 void	ler_mapa(t_mapa *mapa);
