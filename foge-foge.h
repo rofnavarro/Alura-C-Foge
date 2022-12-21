@@ -26,6 +26,7 @@ typedef struct s_mapa
 	char		**mapa;
 	int			y;
 	int			x;
+	int			colecionavel;
 	t_posicao	jogador;
 	t_posicao	fantasmas;
 }	t_mapa;

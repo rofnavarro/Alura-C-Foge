@@ -1,6 +1,6 @@
 #include "../foge-foge.h"
 
-static int	checar_proximo_local(char proximo, char alvo_id);
+static int	checar_proximo_local(t_mapa *mapa, char proximo, char alvo_id);
 
 int	encontrar_no_mapa(t_mapa *mapa, t_posicao *alvo, char char_no_mapa)
 {
@@ -42,7 +42,7 @@ int	verificar_local(t_mapa *mapa, t_posicao *alvo, char direcao, char alvo_id)
 		proxima.y++;
 	else if (direcao == DIREITA)
 		proxima.x++;
-	ret = checar_proximo_local(mapa->mapa[proxima.y][proxima.x], alvo_id);
+	ret = checar_proximo_local(mapa, mapa->mapa[proxima.y][proxima.x], alvo_id);
 	if (ret == TRUE)
 		mapa->mapa[alvo->y][alvo->x] = '0';
 	return (ret);
@@ -72,12 +72,16 @@ void	mover(t_mapa *mapa, t_posicao *alvo, char direcao, char alvo_id)
 	}
 }
 
-static int	checar_proximo_local(char proximo, char alvo_id)
+static int	checar_proximo_local(t_mapa *mapa, char proximo, char alvo_id)
 {
 	if (alvo_id == 'P')
 	{
 		if (proximo == '0' || proximo == 'C')
+		{
+			if (proximo == 'C')
+				mapa->colecionavel++;
 			return (TRUE);
+		}
 		else
 			return (FALSE);
 	}
