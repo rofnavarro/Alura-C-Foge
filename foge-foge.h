@@ -13,6 +13,7 @@
 # define	ESQUERDA	'a'
 # define	BAIXO		's'
 # define	DIREITA		'd'
+# define	BOMBA		'b'
 # define	ESC			27
 
 typedef struct s_posicao
@@ -26,7 +27,7 @@ typedef struct s_mapa
 	char		**mapa;
 	int			y;
 	int			x;
-	int			colecionavel;
+	int			bomba;
 	t_posicao	jogador;
 	t_posicao	fantasmas;
 }	t_mapa;
@@ -42,6 +43,7 @@ void	mover_fantasma(t_mapa *mapa);
 
 //	jogador.c
 void	mover_jogador(t_mapa *mapa, char direcao);
+void	explodir_bomba();
 
 //	mapa.c
 void	ler_mapa(t_mapa *mapa);

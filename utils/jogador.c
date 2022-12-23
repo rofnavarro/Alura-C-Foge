@@ -23,3 +23,9 @@ static int	filtrar_input(t_mapa *mapa, char direcao)
 	}
 	return (FALSE);
 }
+
+void	explodir_bomba(t_mapa *mapa)
+{
+	mapa->bomba = 0;
+	ft_printf("BUM!!\n");
+}

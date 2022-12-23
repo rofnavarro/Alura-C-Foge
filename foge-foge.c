@@ -8,13 +8,15 @@ int	main(void)
 	char		comando;
 
 	ler_mapa(&mapa);
-	mapa.colecionavel = 0;
+	mapa.bomba = 0;
 	while (encontrar_no_mapa(&mapa, &mapa.jogador, 'P') == TRUE)
 	{
 		imprimir_mapa(&mapa);
-		printf("Possui %d bombas\n", mapa.colecionavel);
+		printf("Possui bomba: %s\n", (mapa.bomba ? "Sim" : "Não"));
 		scanf(" %c", &comando);
 		mover_jogador(&mapa, comando);
+		if (comando == BOMBA)
+			explodir_bomba();
 		fantasma(&mapa);
 	}
 	liberar_mapa(&mapa);

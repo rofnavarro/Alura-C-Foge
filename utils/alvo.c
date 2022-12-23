@@ -76,10 +76,10 @@ static int	checar_proximo_local(t_mapa *mapa, char proximo, char alvo_id)
 {
 	if (alvo_id == 'P')
 	{
-		if (proximo == '0' || proximo == 'C')
+		if (proximo == '0' || proximo == 'B')
 		{
-			if (proximo == 'C')
-				mapa->colecionavel++;
+			if (proximo == 'B')
+				mapa->bomba = 1;
 			return (TRUE);
 		}
 		else
