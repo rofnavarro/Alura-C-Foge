@@ -1,6 +1,8 @@
 #include "../foge-foge.h"
 
 static int	filtrar_input(t_mapa *mapa, char direcao);
+static void	explodir_bomba(t_mapa *mapa, t_posicao *jogador, int somay, int somax, int quantidade);
+static int	pode_explodir(t_mapa *mapa, int y, int x);
 
 void	mover_jogador(t_mapa *mapa, char direcao)
 {
@@ -13,8 +15,7 @@ void	mover_jogador(t_mapa *mapa, char direcao)
 
 static int	filtrar_input(t_mapa *mapa, char direcao)
 {
-	if (direcao == CIMA || direcao == ESQUERDA ||
-		direcao == BAIXO || direcao == DIREITA)
+	if (direcao == CIMA || direcao == ESQUERDA || direcao == BAIXO || direcao == DIREITA)
 		return (TRUE);
 	else if (direcao == ESC)
 	{
@@ -24,19 +25,36 @@ static int	filtrar_input(t_mapa *mapa, char direcao)
 	return (FALSE);
 }
 
-void	explodir_bomba(t_mapa *mapa)
+void	explodir(t_mapa *mapa)
 {
-	mapa->bomba = 0;
-	explodir_direcao(mapa, CIMA, 3);
-	explodir_direcao(mapa, ESQUERDA, 3);
-	explodir_direcao(mapa, BAIXO, 3);
-	explodir_direcao(mapa, DIREITA, 3);
-	ft_printf("\nBUM!!\n");
+	if (mapa->bomba > 0)
+	{
+		explodir_bomba(mapa, &mapa->jogador, 0, 1, 3);
+		explodir_bomba(mapa, &mapa->jogador, 0, -1, 3);
+		explodir_bomba(mapa, &mapa->jogador, 1, 0, 3);
+		explodir_bomba(mapa, &mapa->jogador, -1, 0, 3);
+		mapa->bomba--;
+	}
+	return ;
 }
 
-void	explodir_direcao(t_mapa *mapa, char direcao, int quantidade)
+static void	explodir_bomba(t_mapa *mapa, t_posicao *jogador, int somay, int somax, int quantidade)
 {
+	t_posicao alvo;
+
+	alvo.y = jogador->y + somay;
+	alvo.x = jogador->x + somax;
 	if (quantidade == 0)
 		return ;
-	
+	if (!pode_explodir(mapa, alvo.y, alvo.x) == TRUE)
+		return ;
+	mapa->mapa[alvo.y][alvo.x] = '0';
+	explodir_bomba(mapa, &alvo, somay, somax, quantidade - 1);
+}
+
+static int	pode_explodir(t_mapa *mapa, int y, int x)
+{
+	if (mapa->mapa[y][x] == '0' || mapa->mapa[y][x] == 'F' || mapa->mapa[y][x] == 'B')
+		return TRUE;
+	return FALSE;
 }

@@ -43,7 +43,7 @@ void	mover_fantasma(t_mapa *mapa);
 
 //	jogador.c
 void	mover_jogador(t_mapa *mapa, char direcao);
-void	explodir_bomba();
+void	explodir(t_mapa *mapa);
 
 //	mapa.c
 void	ler_mapa(t_mapa *mapa);

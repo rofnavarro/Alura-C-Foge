@@ -16,7 +16,7 @@ int	main(void)
 		scanf(" %c", &comando);
 		mover_jogador(&mapa, comando);
 		if (comando == BOMBA)
-			explodir_bomba();
+			explodir(&mapa);
 		fantasma(&mapa);
 	}
 	liberar_mapa(&mapa);

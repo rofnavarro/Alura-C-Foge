@@ -31,7 +31,7 @@ int	verificar_local(t_mapa *mapa, t_posicao *alvo, char direcao, char alvo_id)
 {
 	t_posicao	proxima;
 	int			ret;
-	
+
 	proxima.x = alvo->x;
 	proxima.y = alvo->y;
 	if (direcao == CIMA)
