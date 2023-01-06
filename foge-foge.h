@@ -16,6 +16,12 @@
 # define	BOMBA		'b'
 # define	ESC			27
 
+# define	VAZIO		'0'
+# define	JOGADOR		'P'
+# define	FANTASMA	'F'
+# define	PODER		'B'
+# define	PAREDE		'1'
+
 typedef struct s_posicao
 {
 	int	x;
@@ -51,5 +57,9 @@ void	alocar_mapa(t_mapa *mapa);
 void	imprimir_mapa(t_mapa *mapa);
 void	liberar_mapa(t_mapa *mapa);
 void	copiar_mapa(t_mapa *destino, t_mapa *origem);
+
+//	ui.c
+void	definir_desenho(char letra, int parte);
+void	imprimir_parte(char desenho[4][7], int parte);
 
 #endif

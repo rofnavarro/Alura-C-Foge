@@ -44,7 +44,7 @@ int	verificar_local(t_mapa *mapa, t_posicao *alvo, char direcao, char alvo_id)
 		proxima.x++;
 	ret = checar_proximo_local(mapa, mapa->mapa[proxima.y][proxima.x], alvo_id);
 	if (ret == TRUE)
-		mapa->mapa[alvo->y][alvo->x] = '0';
+		mapa->mapa[alvo->y][alvo->x] = VAZIO;
 	return (ret);
 }
 
@@ -74,20 +74,20 @@ void	mover(t_mapa *mapa, t_posicao *alvo, char direcao, char alvo_id)
 
 static int	checar_proximo_local(t_mapa *mapa, char proximo, char alvo_id)
 {
-	if (alvo_id == 'P')
+	if (alvo_id == JOGADOR)
 	{
-		if (proximo == '0' || proximo == 'B')
+		if (proximo == VAZIO || proximo == PODER)
 		{
-			if (proximo == 'B')
-				mapa->bomba = 1;
+			if (proximo == PODER)
+				mapa->bomba++;
 			return (TRUE);
 		}
 		else
 			return (FALSE);
 	}
-	else if (alvo_id == 'F')
+	else if (alvo_id == FANTASMA)
 	{
-		if (proximo == 'P' || proximo == 'C' || proximo == '0')
+		if (proximo == JOGADOR || proximo == PODER || proximo == VAZIO)
 			return (TRUE);
 		else
 			return (FALSE);

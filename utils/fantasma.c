@@ -9,7 +9,7 @@ void	fantasma(t_mapa *mapa)
 	{
 		for (int j = 0; j < mapa->x; j++)
 		{
-			if (copia.mapa[i][j] == 'F')
+			if (copia.mapa[i][j] == FANTASMA)
 			{
 				mapa->fantasmas.x = j;
 				mapa->fantasmas.y = i;
@@ -32,9 +32,9 @@ void	mover_fantasma(t_mapa *mapa)
 	while (trys < 5)
 	{
 		i = rand() % 4;
-		if (verificar_local(mapa, &mapa->fantasmas, direcao[i], 'F') == TRUE)
+		if (verificar_local(mapa, &mapa->fantasmas, direcao[i], FANTASMA) == TRUE)
 		{
-			mover(mapa, &mapa->fantasmas, direcao[i], 'F');
+			mover(mapa, &mapa->fantasmas, direcao[i], FANTASMA);
 			return ;
 		}
 		trys++;

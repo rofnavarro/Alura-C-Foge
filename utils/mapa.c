@@ -13,7 +13,6 @@ void	ler_mapa(t_mapa *mapa)
 		exit(EXIT_FAILURE);
 	}
 	fscanf(f, "%d %d", &(mapa->y), &(mapa->x));
-	ft_printf("x: %d / y: %d\n", mapa->x, mapa->y);
 	alocar_mapa(mapa);
 	while (i < mapa->y)
 	{
@@ -39,11 +38,24 @@ void	alocar_mapa(t_mapa *mapa)
 void	imprimir_mapa(t_mapa *mapa)
 {
 	int	i;
+	int	parte;
+	int	j;
 
 	i = 0;
 	while (i < mapa->y)
 	{
-		ft_printf("%s\n", mapa->mapa[i]);
+		parte = 0;
+		while (parte < 4)
+		{
+			j = 0;
+			while (j < mapa->x)
+			{
+				definir_desenho(mapa->mapa[i][j], parte);
+				j++;
+			}
+			ft_printf("\n");
+			parte++;
+		}
 		i++;
 	}
 }

@@ -9,7 +9,7 @@ int	main(void)
 
 	ler_mapa(&mapa);
 	mapa.bomba = 0;
-	while (encontrar_no_mapa(&mapa, &mapa.jogador, 'P') == TRUE)
+	while (encontrar_no_mapa(&mapa, &mapa.jogador, JOGADOR) == TRUE)
 	{
 		imprimir_mapa(&mapa);
 		printf("Possui bomba: %s\n", (mapa.bomba ? "Sim" : "Não"));

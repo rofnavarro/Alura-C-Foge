@@ -8,8 +8,8 @@ void	mover_jogador(t_mapa *mapa, char direcao)
 {
 	if (filtrar_input(mapa, direcao) == TRUE)
 	{
-		if (verificar_local(mapa, &mapa->jogador, direcao, 'P') == TRUE)
-			mover(mapa, &mapa->jogador, direcao, 'P');
+		if (verificar_local(mapa, &mapa->jogador, direcao, JOGADOR) == TRUE)
+			mover(mapa, &mapa->jogador, direcao, JOGADOR);
 	}
 }
 
@@ -48,13 +48,13 @@ static void	explodir_bomba(t_mapa *mapa, t_posicao *jogador, int somay, int soma
 		return ;
 	if (!pode_explodir(mapa, alvo.y, alvo.x) == TRUE)
 		return ;
-	mapa->mapa[alvo.y][alvo.x] = '0';
+	mapa->mapa[alvo.y][alvo.x] = VAZIO;
 	explodir_bomba(mapa, &alvo, somay, somax, quantidade - 1);
 }
 
 static int	pode_explodir(t_mapa *mapa, int y, int x)
 {
-	if (mapa->mapa[y][x] == '0' || mapa->mapa[y][x] == 'F' || mapa->mapa[y][x] == 'B')
+	if (mapa->mapa[y][x] == VAZIO || mapa->mapa[y][x] == FANTASMA || mapa->mapa[y][x] == PODER)
 		return TRUE;
 	return FALSE;
 }
